@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 13-feb-2015 13.52.39 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="main.webapp.ecsa.hibernate.Tvseries" table="tvseries" catalog="osxdb">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="seriesName" type="string">
+            <column name="SeriesName" not-null="true">
+                <comment>Old, instead link id to seriesid in translation_seriesname and read the translation field</comment>
+            </column>
+        </property>
+        <property name="seriesId" type="string">
+            <column name="SeriesID" length="45" unique="true" />
+        </property>
+        <property name="status" type="string">
+            <column name="Status" length="100" />
+        </property>
+        <property name="firstAired" type="string">
+            <column name="FirstAired" length="100" />
+        </property>
+        <property name="network" type="string">
+            <column name="Network" length="100" />
+        </property>
+        <property name="networkId" type="java.lang.Integer">
+            <column name="NetworkID" />
+        </property>
+        <property name="runtime" type="string">
+            <column name="Runtime" length="100" />
+        </property>
+        <property name="genre" type="string">
+            <column name="Genre" length="100" />
+        </property>
+        <property name="actors" type="string">
+            <column name="Actors" length="65535" />
+        </property>
+        <property name="overview" type="string">
+            <column name="Overview" length="65535" />
+        </property>
+        <property name="bannerrequest" type="java.lang.Integer">
+            <column name="bannerrequest" />
+        </property>
+        <property name="lastupdated" type="java.lang.Integer">
+            <column name="lastupdated" />
+        </property>
+        <property name="airsDayOfWeek" type="string">
+            <column name="Airs_DayOfWeek" length="45" />
+        </property>
+        <property name="airsTime" type="string">
+            <column name="Airs_Time" length="45" />
+        </property>
+        <property name="rating" type="string">
+            <column name="Rating" length="45" />
+        </property>
+        <property name="flagged" type="java.lang.Integer">
+            <column name="flagged" />
+        </property>
+        <property name="forceupdate" type="java.lang.Integer">
+            <column name="forceupdate" />
+        </property>
+        <property name="hits" type="java.lang.Integer">
+            <column name="hits" />
+        </property>
+        <property name="updateId" type="int">
+            <column name="updateID" not-null="true" />
+        </property>
+        <property name="requestcomment" type="string">
+            <column name="requestcomment" not-null="true" />
+        </property>
+        <property name="locked" type="string">
+            <column name="locked" length="3" not-null="true" />
+        </property>
+        <property name="mirrorupdate" type="timestamp">
+            <column name="mirrorupdate" length="19" not-null="true" />
+        </property>
+        <property name="lockedby" type="int">
+            <column name="lockedby" not-null="true" />
+        </property>
+        <property name="autoimport" type="string">
+            <column name="autoimport" length="16" />
+        </property>
+        <property name="disabled" type="string">
+            <column name="disabled" length="3" not-null="true" />
+        </property>
+        <property name="imdbId" type="string">
+            <column name="IMDB_ID" length="25" unique="true" />
+        </property>
+        <property name="zap2itId" type="string">
+            <column name="zap2it_id" length="12" unique="true" />
+        </property>
+        <property name="added" type="timestamp">
+            <column name="added" length="19" />
+        </property>
+        <property name="addedBy" type="java.lang.Integer">
+            <column name="addedBy" />
+        </property>
+        <property name="tmsWantedOld" type="boolean">
+            <column name="tms_wanted_old" not-null="true" />
+        </property>
+        <property name="tmsPriority" type="int">
+            <column name="tms_priority" not-null="true" />
+        </property>
+        <property name="tmsWanted" type="java.lang.Byte">
+            <column name="tms_wanted" />
+        </property>
+    </class>
+</hibernate-mapping>

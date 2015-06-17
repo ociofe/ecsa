@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 13-feb-2015 13.52.39 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="main.webapp.ecsa.hibernate.Seriesactors" table="seriesactors" catalog="osxdb">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="seriesId" type="int">
+            <column name="SeriesID" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="Name" />
+        </property>
+        <property name="role" type="string">
+            <column name="Role" />
+        </property>
+        <property name="sortOrder" type="short">
+            <column name="SortOrder" not-null="true" />
+        </property>
+        <property name="image" type="string">
+            <column name="Image" />
+        </property>
+        <property name="imageAuthor" type="java.lang.Integer">
+            <column name="ImageAuthor" />
+        </property>
+        <property name="imageAdded" type="timestamp">
+            <column name="ImageAdded" length="19" />
+        </property>
+        <property name="lastUpdate" type="timestamp">
+            <column name="LastUpdate" length="19" not-null="true" />
+        </property>
+        <property name="lastUpdateBy" type="int">
+            <column name="LastUpdateBy" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

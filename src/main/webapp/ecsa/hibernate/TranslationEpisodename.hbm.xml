@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 13-feb-2015 13.52.39 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="main.webapp.ecsa.hibernate.TranslationEpisodename" table="translation_episodename" catalog="osxdb">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="episodeid" type="int">
+            <column name="episodeid" not-null="true" />
+        </property>
+        <property name="languageid" type="int">
+            <column name="languageid" not-null="true" />
+        </property>
+        <property name="translation" type="string">
+            <column name="translation" not-null="true" />
+        </property>
+        <property name="mirrorupdate" type="timestamp">
+            <column name="mirrorupdate" length="19" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

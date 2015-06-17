@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 13-feb-2015 13.52.39 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="main.webapp.ecsa.hibernate.Countries" table="countries" catalog="osxdb">
+        <id name="countryid" type="java.lang.Integer">
+            <column name="countryid" />
+            <generator class="identity" />
+        </id>
+        <property name="iso2" type="string">
+            <column name="iso2" length="2" />
+        </property>
+        <property name="shortname" type="string">
+            <column name="shortname" length="80" not-null="true" />
+        </property>
+        <property name="longname" type="string">
+            <column name="longname" length="80" not-null="true" />
+        </property>
+        <property name="iso3" type="string">
+            <column name="iso3" length="3" />
+        </property>
+        <property name="numcode" type="string">
+            <column name="numcode" length="6" />
+        </property>
+        <property name="unMember" type="string">
+            <column name="un_member" length="12" />
+        </property>
+        <property name="callingcode" type="string">
+            <column name="callingcode" length="8" />
+        </property>
+        <property name="tld" type="string">
+            <column name="tld" length="5" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 13-feb-2015 13.52.39 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="main.webapp.ecsa.hibernate.Tvseasons" table="tvseasons" catalog="osxdb">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="seriesid" type="int">
+            <column name="seriesid" not-null="true" />
+        </property>
+        <property name="season" type="int">
+            <column name="season" not-null="true" />
+        </property>
+        <property name="bannerrequest" type="java.lang.Integer">
+            <column name="bannerrequest" />
+        </property>
+        <property name="locked" type="string">
+            <column name="locked" length="3" not-null="true" />
+        </property>
+        <property name="mirrorupdate" type="timestamp">
+            <column name="mirrorupdate" length="19" not-null="true" />
+        </property>
+        <property name="lockedby" type="int">
+            <column name="lockedby" not-null="true" />
+        </property>
+        <property name="tmsWanted" type="boolean">
+            <column name="tms_wanted" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

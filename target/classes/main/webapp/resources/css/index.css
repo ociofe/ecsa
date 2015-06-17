@@ -1,0 +1,22 @@
+@CHARSET "ISO-8859-1";
+
+/* 
+.jumbotron{
+    background: url('/ecsa/resources/images/ecsaLogo.jpg') no-repeat center center; 
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+} */
+
+
+.jumbotron{
+    background: url('/ecsa/resources/images/ecsaLogo.jpg'); 
+ 	 background-size:contain;
+ 	 background-repeat: no-repeat;
+ 	 background-position: center;
+	 cursor: pointer; cursor: hand;
+}
+
+
+

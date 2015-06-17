@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 13-feb-2015 13.52.39 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="main.webapp.ecsa.hibernate.Banners" table="banners" catalog="osxdb">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="keytype" type="string">
+            <column name="keytype" length="16" not-null="true" />
+        </property>
+        <property name="keyvalue" type="int">
+            <column name="keyvalue" not-null="true" />
+        </property>
+        <property name="userid" type="int">
+            <column name="userid" not-null="true" />
+        </property>
+        <property name="subkey" type="string">
+            <column name="subkey" length="16" />
+        </property>
+        <property name="filename" type="string">
+            <column name="filename" not-null="true" />
+        </property>
+        <property name="username" type="string">
+            <column name="username" length="45" />
+        </property>
+        <property name="dateadded" type="java.lang.Integer">
+            <column name="dateadded" />
+        </property>
+        <property name="languageid" type="int">
+            <column name="languageid" not-null="true" />
+        </property>
+        <property name="resolution" type="string">
+            <column name="resolution" length="9" />
+        </property>
+        <property name="colors" type="string">
+            <column name="colors" />
+        </property>
+        <property name="artistcolors" type="string">
+            <column name="artistcolors" />
+        </property>
+        <property name="mirrorupdate" type="timestamp">
+            <column name="mirrorupdate" length="19" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

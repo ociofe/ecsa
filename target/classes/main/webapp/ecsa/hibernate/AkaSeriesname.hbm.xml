@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 13-feb-2015 13.52.39 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="main.webapp.ecsa.hibernate.AkaSeriesname" table="aka_seriesname" catalog="osxdb">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="seriesid" type="int">
+            <column name="seriesid" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" not-null="true" />
+        </property>
+        <property name="languageid" type="int">
+            <column name="languageid" not-null="true" />
+        </property>
+        <property name="search" type="boolean">
+            <column name="search" not-null="true">
+                <comment>Indicates if it's a true alias or just an alias meant to make it easier to find in a search</comment>
+            </column>
+        </property>
+        <property name="lasteditby" type="int">
+            <column name="lasteditby" not-null="true" />
+        </property>
+        <property name="lastedit" type="timestamp">
+            <column name="lastedit" length="19" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

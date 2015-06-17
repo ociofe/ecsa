@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 13-feb-2015 13.52.39 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="main.webapp.ecsa.hibernate.Tvepisodes" table="tvepisodes" catalog="osxdb">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="seasonid" type="int">
+            <column name="seasonid" not-null="true" />
+        </property>
+        <property name="episodeNumber" type="int">
+            <column name="EpisodeNumber" not-null="true" />
+        </property>
+        <property name="episodeName" type="string">
+            <column name="EpisodeName" />
+        </property>
+        <property name="firstAired" type="string">
+            <column name="FirstAired" length="45" />
+        </property>
+        <property name="guestStars" type="string">
+            <column name="GuestStars" length="65535" />
+        </property>
+        <property name="director" type="string">
+            <column name="Director" length="65535" />
+        </property>
+        <property name="writer" type="string">
+            <column name="Writer" length="65535" />
+        </property>
+        <property name="overview" type="string">
+            <column name="Overview" length="65535" />
+        </property>
+        <property name="productionCode" type="string">
+            <column name="ProductionCode" length="45" />
+        </property>
+        <property name="showUrl" type="string">
+            <column name="ShowURL" />
+        </property>
+        <property name="lastupdated" type="java.lang.Integer">
+            <column name="lastupdated" />
+        </property>
+        <property name="flagged" type="java.lang.Integer">
+            <column name="flagged" />
+        </property>
+        <property name="dvdDiscid" type="string">
+            <column name="DVD_discid" length="45" />
+        </property>
+        <property name="dvdSeason" type="java.lang.Integer">
+            <column name="DVD_season" />
+        </property>
+        <property name="dvdEpisodenumber" type="big_decimal">
+            <column name="DVD_episodenumber" precision="10" scale="1" />
+        </property>
+        <property name="dvdChapter" type="java.lang.Integer">
+            <column name="DVD_chapter" />
+        </property>
+        <property name="locked" type="string">
+            <column name="locked" length="3" not-null="true" />
+        </property>
+        <property name="absoluteNumber" type="java.lang.Integer">
+            <column name="absolute_number" />
+        </property>
+        <property name="filename" type="string">
+            <column name="filename" />
+        </property>
+        <property name="seriesid" type="int">
+            <column name="seriesid" not-null="true" />
+        </property>
+        <property name="lastupdatedby" type="int">
+            <column name="lastupdatedby" not-null="true" />
+        </property>
+        <property name="airsafterSeason" type="string">
+            <column name="airsafter_season" length="10" />
+        </property>
+        <property name="airsbeforeSeason" type="java.lang.Integer">
+            <column name="airsbefore_season" />
+        </property>
+        <property name="airsbeforeEpisode" type="java.lang.Integer">
+            <column name="airsbefore_episode" />
+        </property>
+        <property name="thumbAuthor" type="int">
+            <column name="thumb_author" not-null="true" />
+        </property>
+        <property name="thumbAdded" type="timestamp">
+            <column name="thumb_added" length="19" />
+        </property>
+        <property name="thumbWidth" type="java.lang.Short">
+            <column name="thumb_width" />
+        </property>
+        <property name="thumbHeight" type="java.lang.Short">
+            <column name="thumb_height" />
+        </property>
+        <property name="tmsExport" type="java.lang.Long">
+            <column name="tms_export" />
+        </property>
+        <property name="mirrorupdate" type="timestamp">
+            <column name="mirrorupdate" length="19" not-null="true" />
+        </property>
+        <property name="lockedby" type="int">
+            <column name="lockedby" not-null="true" />
+        </property>
+        <property name="imdbId" type="string">
+            <column name="IMDB_ID" length="25" unique="true" />
+        </property>
+        <property name="epImgFlag" type="java.lang.Byte">
+            <column name="EpImgFlag" />
+        </property>
+        <property name="tmsReviewBy" type="java.lang.Integer">
+            <column name="tms_review_by" />
+        </property>
+        <property name="tmsReviewDate" type="date">
+            <column name="tms_review_date" length="10" />
+        </property>
+        <property name="tmsReviewBlurry" type="boolean">
+            <column name="tms_review_blurry" not-null="true" />
+        </property>
+        <property name="tmsReviewDark" type="boolean">
+            <column name="tms_review_dark" not-null="true" />
+        </property>
+        <property name="tmsReviewLogo" type="boolean">
+            <column name="tms_review_logo" not-null="true" />
+        </property>
+        <property name="tmsReviewOther" type="boolean">
+            <column name="tms_review_other" not-null="true" />
+        </property>
+        <property name="tmsReviewUnsure" type="boolean">
+            <column name="tms_review_unsure" not-null="true" />
+        </property>
+        <property name="tmsPriority" type="boolean">
+            <column name="tms_priority" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

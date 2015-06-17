@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 13-feb-2015 13.52.39 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="main.webapp.ecsa.hibernate.Languagesnew" table="languagesnew" catalog="osxdb">
+        <id name="iso6393" type="string">
+            <column name="ISO6393" length="3" />
+            <generator class="assigned" />
+        </id>
+        <property name="iso6392b" type="string">
+            <column name="ISO6392B" length="3" />
+        </property>
+        <property name="iso6392t" type="string">
+            <column name="ISO6392T" length="3" />
+        </property>
+        <property name="iso6391" type="string">
+            <column name="ISO6391" length="2" />
+        </property>
+        <property name="scope" type="java.lang.Character">
+            <column name="Scope" length="1" />
+        </property>
+        <property name="type" type="java.lang.Character">
+            <column name="Type" length="1" />
+        </property>
+        <property name="englishName" type="string">
+            <column name="EnglishName" length="150" />
+        </property>
+        <property name="nativeName" type="string">
+            <column name="NativeName" length="250" />
+        </property>
+    </class>
+</hibernate-mapping>
