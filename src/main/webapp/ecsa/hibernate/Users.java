@@ -6,7 +6,7 @@ package main.webapp.ecsa.hibernate;
  */
 public class Users implements java.io.Serializable {
 
-	private Integer id;
+	private String id;
 	private String user;
 	private String name;
 	private String surname;
@@ -25,11 +25,11 @@ public class Users implements java.io.Serializable {
 		this.password = password;
 	}
 
-	public Integer getId() {
+	public String getId() {
 		return this.id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

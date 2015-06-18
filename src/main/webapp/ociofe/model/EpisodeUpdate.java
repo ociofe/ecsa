@@ -4,12 +4,12 @@ import java.io.Serializable;
 
 public class EpisodeUpdate implements Serializable {
 
+	
 	 // Default serial UID
     private static final long serialVersionUID = 1L;
     private String id;
     private String series;
     private String time;
-
     public String getId() {
         return id;
     }

@@ -6,9 +6,9 @@ import java.util.List;
 
 import main.webapp.ecsa.hibernate.Jobhistory;
 import main.webapp.ecsa.hibernate.Tvseries;
-import main.webapp.ecsa.util.SessionFactoryUtil;
 import main.webapp.ociofe.model.SeriesUpdate;
 import main.webapp.ociofe.model.TVDBUpdates;
+import main.webapp.show.util.SessionFactoryUtil;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.w3c.dom.Document;
@@ -20,7 +20,7 @@ public class TheTVDBApi {
 
 	
 	
-	private static main.webapp.ecsa.util.TvdbParser TvdbParser;
+	private static main.webapp.show.util.TvdbParser TvdbParser;
 	
 	private static final String apiKey = "53756618E9F4E84E";
     private static final String URL_XML = "http://thetvdb.com/api/";
@@ -71,7 +71,7 @@ public class TheTVDBApi {
         }
 
         
-        main.webapp.ecsa.util.TvdbParser.getSeriesList(urlBuilder.toString());
+        main.webapp.show.util.TvdbParser.getSeriesList(urlBuilder.toString());
 
     }
     
@@ -87,7 +87,7 @@ public class TheTVDBApi {
                 urlBuilder.append(language).append(XML_EXTENSION);
             }
 
-            main.webapp.ecsa.util.TvdbParser.getEpisode(urlBuilder.toString());
+            main.webapp.show.util.TvdbParser.getEpisode(urlBuilder.toString());
         }
         
     
@@ -97,7 +97,7 @@ public class TheTVDBApi {
     	
     	//saveSeries("289745","en");
     	
-        Document doc = main.webapp.ecsa.util.DOMHelper.getDocumentFromXml(lastUpdatatimeURL);
+        Document doc = main.webapp.show.util.DOMHelper.getDocumentFromXml(lastUpdatatimeURL);
 
         if (doc != null) {
         	Element docEle = doc.getDocumentElement();

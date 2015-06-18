@@ -40,7 +40,7 @@
 	 <bean id="multipartResolver"
  		 class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 	
-	<bean id="baseController" class="main.webapp.ecsa.controller.BaseController" >
+	<bean id="baseController" class="main.webapp.show.controller.BaseController" >
 		<property name="elementNote"> 
 			<ref bean="elementNote"/>
 		</property>
@@ -48,8 +48,8 @@
 	
 	<bean id="runScheduler" class="main.webapp.ociofe.job.UpdateJobEpisodeSeries" />
 	
-	<task:scheduled-tasks>
+<!-- 	<task:scheduled-tasks>
 		<task:scheduled ref="runScheduler" method="run" fixed-delay="50000" />
-  	</task:scheduled-tasks>
+  	</task:scheduled-tasks> -->
 
 </beans>

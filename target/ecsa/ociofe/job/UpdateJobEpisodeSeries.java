@@ -2,8 +2,8 @@ package main.webapp.ociofe.job;
 
 import main.webapp.ecsa.hibernate.Jobhistory;
 import main.webapp.ecsa.hibernate.Tvseries;
-import main.webapp.ecsa.util.SessionFactoryUtil;
 import main.webapp.ociofe.api.TheTVDBApi;
+import main.webapp.show.util.SessionFactoryUtil;
 
 import org.hibernate.Session;
 import org.springframework.scheduling.annotation.EnableScheduling;

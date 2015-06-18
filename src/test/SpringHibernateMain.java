@@ -2,11 +2,12 @@ package test;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import main.webapp.ecsa.util.HttpUtil;
+import main.webapp.show.util.HttpUtil;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
