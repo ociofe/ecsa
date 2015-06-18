@@ -6,6 +6,10 @@ package main.webapp.ecsa.hibernate;
  */
 public class Users implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String user;
 	private String name;

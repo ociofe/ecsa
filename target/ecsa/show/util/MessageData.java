@@ -6,7 +6,16 @@ public class MessageData {
 	public String code;
 	public String status;
 	
+	public MessageData(String code, String message, String status ){
+		this.code = code;
+		this.message = message;
+		this.status = status;
+	}
 	
+	public MessageData() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getMessage() {
 		return message;
 	}

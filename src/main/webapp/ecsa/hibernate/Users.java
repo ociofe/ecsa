@@ -6,7 +6,11 @@ package main.webapp.ecsa.hibernate;
  */
 public class Users implements java.io.Serializable {
 
-	private String id;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer id;
 	private String user;
 	private String name;
 	private String surname;
@@ -25,11 +29,11 @@ public class Users implements java.io.Serializable {
 		this.password = password;
 	}
 
-	public String getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

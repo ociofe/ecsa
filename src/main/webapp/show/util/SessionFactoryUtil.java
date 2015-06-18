@@ -8,6 +8,7 @@ import main.webapp.ecsa.hibernate.Languages;
 import main.webapp.ecsa.hibernate.TranslationSeriesname;
 import main.webapp.ecsa.hibernate.TranslationSeriesoverview;
 import main.webapp.ecsa.hibernate.Tvseasons;
+import main.webapp.ecsa.hibernate.Users;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -35,25 +36,65 @@ public class SessionFactoryUtil {
         return sessionFactory;
     }
     
-    public static void saveObject(Object obj, String entity){
+    public static MessageData saveObject(Object obj, String entity){
     	
     	Session session = SessionFactoryUtil.getSessionFactory().openSession();
-    	
+    	MessageData message = new MessageData();
     	Transaction tx = null;
 	    try {
 	    	tx = session.beginTransaction();
+	    	session.isConnected();
+	    	session.isOpen();
 	    	session.saveOrUpdate(entity,obj);
 	    	 tx.commit();
+	    	 message.setStatus("SUCCES");
 	    	  
 	    	} catch(Exception e) {
 	    	  if (tx != null) {
 	    	    tx.rollback();
+	    	    message.setStatus("FAIL");
+	    	    message.setStatus(e.getMessage());
+	    	    message.setCode(e.getCause().getLocalizedMessage());
 	    	  }
 	    	} finally {
 	    	  if (session != null) {
 	    		  session.close(); // 
+	    		  
 	    	  }
 	    	}
+	    return message;
+	    
+    }
+    
+    public static MessageData userExist(Users User){
+    	
+    	Session session = SessionFactoryUtil.getSessionFactory().openSession();
+    	MessageData message = new MessageData();
+    	Transaction tx = null;
+	    try {
+	    	tx = session.beginTransaction();
+	    	session.isConnected();
+	    	session.isOpen();
+	    	String query = "FROM Users WHERE MAIL = "+User.getMail();
+	    	List<Users> users = session.createQuery(query).list();
+	    	if (!users.isEmpty()){
+	    		message.setStatus("SUCCES");
+	    	}
+	    	} catch(Exception e) {
+	    	  if (tx != null) {
+	    	    tx.rollback();
+	    	    message.setStatus("FAIL");
+	    	    message.setStatus(e.getMessage());
+	    	    message.setCode(e.getLocalizedMessage());
+	    	  }
+	    	} finally {
+	    	  if (session != null) {
+	    	    	session.clear();
+	    		    session.close();
+	    	  }
+	    	}
+	    return message;
+	    
     }
     
     public static void ceckAndRemove(String what, int id, int languageID){

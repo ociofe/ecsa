@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import main.webapp.ecsa.dao.Login;
 import main.webapp.ecsa.hibernate.Users;
 import main.webapp.show.util.MessageData;
+import main.webapp.show.util.SessionFactoryUtil;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -22,12 +23,23 @@ import org.springframework.web.bind.annotation.RestController;
 public class RegisterController {
 	 static Logger LOG = Logger.getLogger( RegisterController.class.toString());
 	
-	 @RequestMapping(value="/register", method = RequestMethod.POST, headers = "Accept=application/json")
+	 @RequestMapping(value="/register", method = RequestMethod.POST, consumes="application/json", headers = {"Content-type=application/json"})
 		public @ResponseBody MessageData registerPost(@RequestBody Users user) {
 		 MessageData message = new MessageData();
-
+		 
+		 SessionFactoryUtil.saveObject(user,"User");
 		 LOG.info(user.getMail());
 		 return message;
 	 }
+	 
+	 @RequestMapping(value="/login", method = RequestMethod.POST, consumes="application/json", headers = {"Content-type=application/json"})
+		public @ResponseBody MessageData loginPost(@RequestBody Users user) {
+		 MessageData message = new MessageData();
+
+		 SessionFactoryUtil.saveObject(user,"User");
+		 LOG.info(user.getMail());
+		 return message;
+	 }
+	 
 
 }

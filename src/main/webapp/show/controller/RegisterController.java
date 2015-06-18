@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import main.webapp.ecsa.dao.Login;
 import main.webapp.ecsa.hibernate.Users;
 import main.webapp.show.util.MessageData;
+import main.webapp.show.util.SessionFactoryUtil;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -25,9 +26,20 @@ public class RegisterController {
 	 @RequestMapping(value="/register", method = RequestMethod.POST, consumes="application/json", headers = {"Content-type=application/json"})
 		public @ResponseBody MessageData registerPost(@RequestBody Users user) {
 		 MessageData message = new MessageData();
-
+		 
+		 message =  SessionFactoryUtil.saveObject(user,"User");
 		 LOG.info(user.getMail());
 		 return message;
 	 }
+	 
+	 @RequestMapping(value="/login", method = RequestMethod.POST, consumes="application/json", headers = {"Content-type=application/json"})
+		public @ResponseBody MessageData loginPost(@RequestBody Users user) {
+		 MessageData message = new MessageData();
+
+		 message = SessionFactoryUtil.userExist(user);
+		 LOG.info(user.getMail());
+		 return message;
+	 }
+	 
 
 }
