@@ -48,8 +48,8 @@
 	
 	 <bean id="runScheduler" class="main.webapp.ociofe.job.UpdateJobEpisodeSeries" /> 
 	
-	<task:scheduled-tasks>
+<!-- 	<task:scheduled-tasks>
 		<task:scheduled ref="runScheduler" method="run" fixed-delay="50000" />
-  	</task:scheduled-tasks>  
+  	</task:scheduled-tasks>   -->
 
 </beans>

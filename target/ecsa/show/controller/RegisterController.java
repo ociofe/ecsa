@@ -27,7 +27,7 @@ public class RegisterController {
 		public @ResponseBody MessageData registerPost(@RequestBody Users user) {
 		 MessageData message = new MessageData();
 		 
-		 SessionFactoryUtil.saveObject(user,"User");
+		 message =  SessionFactoryUtil.saveObject(user,"User");
 		 LOG.info(user.getMail());
 		 return message;
 	 }
@@ -36,7 +36,7 @@ public class RegisterController {
 		public @ResponseBody MessageData loginPost(@RequestBody Users user) {
 		 MessageData message = new MessageData();
 
-		 SessionFactoryUtil.saveObject(user,"User");
+		 message = SessionFactoryUtil.userExist(user);
 		 LOG.info(user.getMail());
 		 return message;
 	 }

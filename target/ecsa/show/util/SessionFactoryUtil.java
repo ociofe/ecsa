@@ -47,13 +47,14 @@ public class SessionFactoryUtil {
 	    	session.isOpen();
 	    	session.saveOrUpdate(entity,obj);
 	    	 tx.commit();
+	    	 message.setStatus("SUCCES");
 	    	  
 	    	} catch(Exception e) {
 	    	  if (tx != null) {
 	    	    tx.rollback();
-	    	    message.setStatus("Fail");
+	    	    message.setStatus("FAIL");
 	    	    message.setStatus(e.getMessage());
-	    	    message.setCode(e.getLocalizedMessage());
+	    	    message.setCode(e.getCause().getLocalizedMessage());
 	    	  }
 	    	} finally {
 	    	  if (session != null) {
@@ -74,22 +75,22 @@ public class SessionFactoryUtil {
 	    	tx = session.beginTransaction();
 	    	session.isConnected();
 	    	session.isOpen();
-	    	String query = "FROM Users WHERE MAIL = \""+User.getMail()+ "\"";
+	    	String query = "FROM Users WHERE MAIL = '"+User.getMail()+"'";
 	    	List<Users> users = session.createQuery(query).list();
 	    	if (!users.isEmpty()){
-	    		message.setStatus("Succes");
+	    		message.setStatus("SUCCES");
+	    		message.setMessage("User Found");
 	    	}
 	    	} catch(Exception e) {
 	    	  if (tx != null) {
 	    	    tx.rollback();
-	    	    message.setStatus("Fail");
+	    	    message.setStatus("FAIL");
 	    	    message.setStatus(e.getMessage());
 	    	    message.setCode(e.getLocalizedMessage());
 	    	  }
 	    	} finally {
 	    	  if (session != null) {
 	    	    	session.clear();
-	    		    tx.commit();
 	    		    session.close();
 	    	  }
 	    	}
