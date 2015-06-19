@@ -75,10 +75,11 @@ public class SessionFactoryUtil {
 	    	tx = session.beginTransaction();
 	    	session.isConnected();
 	    	session.isOpen();
-	    	String query = "FROM Users WHERE MAIL = "+User.getMail();
+	    	String query = "FROM Users WHERE MAIL = '"+User.getMail()+"'";
 	    	List<Users> users = session.createQuery(query).list();
 	    	if (!users.isEmpty()){
 	    		message.setStatus("SUCCES");
+	    		message.setMessage("User Found");
 	    	}
 	    	} catch(Exception e) {
 	    	  if (tx != null) {
