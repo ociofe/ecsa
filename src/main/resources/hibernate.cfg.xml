@@ -31,7 +31,7 @@
        <mapping resource="main/webapp/ecsa/hibernate/Tvseries.hbm.xml"></mapping>
        <mapping resource="main/webapp/ecsa/hibernate/Jobhistory.hbm.xml"></mapping>
        <mapping resource="main/webapp/ecsa/hibernate/Users.hbm.xml"></mapping>
-       
+       <mapping resource="main/webapp/ecsa/hibernate/TvserieUser.hbm.xml"></mapping>
        
     </session-factory>
 </hibernate-configuration>

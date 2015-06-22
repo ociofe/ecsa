@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 19-giu-2015 16.47.19 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="Countries" table="countries" catalog="osxdb">
+    <class name="main.webapp.ecsa.hibernate.Countries" table="countries" catalog="osxdb">
         <id name="countryid" type="java.lang.Integer">
             <column name="countryid" />
             <generator class="identity" />

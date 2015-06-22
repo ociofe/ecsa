@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 19-giu-2015 16.47.19 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="Networks" table="networks" catalog="osxdb">
+    <class name="main.webapp.ecsa.hibernate.Networks" table="networks" catalog="osxdb">
         <id name="netId" type="java.lang.Integer">
             <column name="netID" />
             <generator class="identity" />

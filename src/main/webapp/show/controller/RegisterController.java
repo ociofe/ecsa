@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 
 import main.webapp.ecsa.dao.Login;
+import main.webapp.ecsa.hibernate.TvserieUser;
 import main.webapp.ecsa.hibernate.Users;
 import main.webapp.show.util.MessageData;
 import main.webapp.show.util.SessionFactoryUtil;
@@ -41,5 +42,16 @@ public class RegisterController {
 		 return message;
 	 }
 	 
+	 @RequestMapping(value="/saveSeries", method = RequestMethod.POST, consumes="application/json", headers = {"Content-type=application/json"})
+		public @ResponseBody MessageData saveSerier(@RequestBody TvserieUser tvUser) {
+		 MessageData message = new MessageData();
+		 
+//		 TvserieUserId tvUser=  new TvserieUserId();
+//		 tvUser.setTvserie("serie");
+//		 tvUser.setUser(1234);
+		 message= SessionFactoryUtil.saveObject(tvUser,"TvserieUser");
+		 
+		 return message;
+	 }
 
 }

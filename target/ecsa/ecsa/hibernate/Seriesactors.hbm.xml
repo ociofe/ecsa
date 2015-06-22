@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 19-giu-2015 16.47.19 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="Seriesactors" table="seriesactors" catalog="osxdb">
+    <class name="main.webapp.ecsa.hibernate.Seriesactors" table="seriesactors" catalog="osxdb">
         <id name="id" type="java.lang.Integer">
             <column name="id" />
             <generator class="identity" />
