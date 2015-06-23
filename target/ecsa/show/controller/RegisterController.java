@@ -49,9 +49,8 @@ public class RegisterController {
 //		 TvserieUserId tvUser=  new TvserieUserId();
 //		 tvUser.setTvserie("serie");
 //		 tvUser.setUser(1234);
-		 SessionFactoryUtil.saveObject(tvUser,"TvserieUser");
+		 message= SessionFactoryUtil.saveObject(tvUser,"TvserieUser");
 		 
-		 LOG.info(tvUser.getTvserie());
 		 return message;
 	 }
 

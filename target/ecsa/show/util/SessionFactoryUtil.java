@@ -7,13 +7,20 @@ import main.webapp.ecsa.hibernate.Jobhistory;
 import main.webapp.ecsa.hibernate.Languages;
 import main.webapp.ecsa.hibernate.TranslationSeriesname;
 import main.webapp.ecsa.hibernate.TranslationSeriesoverview;
+import main.webapp.ecsa.hibernate.Tvepisodes;
 import main.webapp.ecsa.hibernate.Tvseasons;
+import main.webapp.ecsa.hibernate.TvserieUser;
+import main.webapp.ecsa.hibernate.Tvseries;
 import main.webapp.ecsa.hibernate.Users;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
  
  
 public class SessionFactoryUtil {
@@ -55,11 +62,12 @@ public class SessionFactoryUtil {
 	    	    message.setStatus("FAIL");
 	    	    message.setStatus(e.getMessage());
 	    	    message.setCode(e.getCause().getLocalizedMessage());
+	    	    
 	    	  }
 	    	} finally {
 	    	  if (session != null) {
 	    		  session.close(); // 
-	    		  
+	    		  return message;
 	    	  }
 	    	}
 	    return message;
@@ -140,6 +148,44 @@ public class SessionFactoryUtil {
 	    session.close();
     }
     
+    public static List<TvserieUser> getSeriesTvserieUserForUser(Users user){
+    	
+    	Session session = SessionFactoryUtil.getSessionFactory().openSession();
+    	List<TvserieUser> retu = null; 
+    	String from = "FROM TvserieUser WHERE User="+ user.getUser()+"";
+		retu = session.createQuery(from).list();
+	    session.beginTransaction();
+	    session.flush();   
+	    session.close();
+	    return retu;
+		    
+    }
+    
+    public static List<Tvepisodes> getLastEpisodeForEachSeries(List<TvserieUser> tvserieUserList){
+    	
+    	Session session = SessionFactoryUtil.getSessionFactory().openSession();
+    	List<Tvepisodes> retu = null; 
+   
+    	
+    	for(TvserieUser eul: tvserieUserList){
+        	Criteria crit = session.createCriteria(Tvepisodes.class);
+        	crit.setMaxResults(1);
+        	crit.addOrder( Order.desc("firstAired") );
+        	crit.add( Restrictions.eq("seriesid", eul.getTvserie()));
+        	crit.uniqueResult();
+    		retu.addAll( crit.list());
+    	}
+//    	episodeList = episodeList.substring(0, episodeList.length()-1);
+//    	episodeList = episodeList.concat(") ");
+//    	String from = "FROM Tvepisodes WHERE Seriesid IN"+ episodeList+ "and ";
+//		retu = session.createQuery(from).list();
+	    session.beginTransaction();
+	    session.flush();   
+	    session.close();
+	   
+	    return retu;
+		    
+    }
     
     public static List<Languages> retriveLanguages(String language){
     	
@@ -201,6 +247,28 @@ public class SessionFactoryUtil {
 	    	}
 	    
 	    return seasonId;
+    }
+    
+    public static List<Tvseasons> seasonSearch(String seriesName ){
+    	Session session = SessionFactoryUtil.getSessionFactory().openSession();
+    	List<Tvseasons> season = null; 
+    	Transaction tx = null;
+	    try {
+	    	tx = session.beginTransaction();
+	    	String from = "FROM Tvseries WHERE seriesName like '%"+ seriesName +"%'";
+	    	season = session.createQuery(from).list();
+	    	tx.commit();
+	    	} catch(Exception e) {
+	    	  if (tx != null) {
+	    	    tx.rollback();
+	    	  }
+	    	} finally {
+	    	  if (session != null) {
+	    		  session.close(); // 
+	    	  }
+	    	}
+	    
+	    return season;
     }
     
  

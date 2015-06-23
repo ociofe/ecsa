@@ -4,16 +4,15 @@
 <!-- Generated 19-giu-2015 16.47.19 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="main.webapp.ecsa.hibernate.TvserieUser" table="tvserie_user" catalog="osxdb">
-        <composite-id name="id" class="TvserieUserId">
-            <key-property name="id" type="int">
-                <column name="id" />
-            </key-property>
-            <key-property name="user" type="int">
+            <id name="id" type="java.lang.Integer">
+            	<column name="id" />
+            	<generator class="identity" />
+        	</id>
+            <property name="user" type="int">
                 <column name="user" />
-            </key-property>
-            <key-property name="tvserie" type="string">
+            </property>
+            <property name="tvserie" type="string">
                 <column name="tvserie" />
-            </key-property>
-        </composite-id>
+            </property>
     </class>
 </hibernate-mapping>
