@@ -37,37 +37,41 @@
 <link href="<c:url value="/resources/css/index.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet"> 
 <body>
+
+
+<div class="alert alert-danger hide" role="alert" id="errorlist"></div>
+
 <div class="container">
 	<div class="row">
 		<form id="frmLogin" class="form-horizontal">
 			 <div class="form-group">
 				<label class="control-label col-sm-2" for="user">User :</label>
 				<div class="col-sm-10">
-					<input class="form-control input-sm chat-input" id="user" type="text">
+					<input class="form-control input-sm chat-input" id="user" type="text" name="user" value="PIPPO">
 				</div>
 			</div>
 			 <div class="form-group">
 				<label class="control-label col-sm-2" for="name">Name :</label>
 				<div class="col-sm-10">
-					<input class="form-control input-sm chat-input" id="name" type="text">
+					<input class="form-control input-sm chat-input" id="name" type="text" name="name" value="PLUTO">
 				</div>
 			</div>
 			 <div class="form-group">
 				<label class="control-label col-sm-2" for="surname">Surname :</label>
 				<div class="col-sm-10">
-					<input class="form-control input-sm chat-input" id="surname" type="text">
+					<input class="form-control input-sm chat-input" id="surname" type="text" name="surname" value="PIPPONE">
 				</div>
 			</div>
 			 <div class="form-group">
 				<label class="control-label col-sm-2" for="mail">Email :</label>
 				<div class="col-sm-10">
-					<input class="form-control input-sm chat-input" id="mail" type="text">
+					<input class="form-control input-sm chat-input" id="mail" type="text" name="mail" value="pippo@libero.it">
 				</div>
 			</div>
 			 <div class="form-group">
 				<label class="control-label col-sm-2" for="password">Password :</label>
 				<div class="col-sm-10">
-					<input class="form-control input-sm chat-input" id="password" type="text">
+					<input class="form-control input-sm chat-input" id="password" type="text" name="password" value="123456">
 				</div>
 			</div>
 			 <div class="wrapper">
@@ -82,9 +86,36 @@
  <script type="text/javascript">
  $(document).ready(function() {
 	 
-
+	 $('#bottone').on("click",function(){
+         var options = {};
+         options.idform="#frmLogin";
+         options.url="http://localhost:8080/ecsa/user/register";
+         options.dataType="json";
+         options.headers= { 
+	        'Accept': 'application/json',
+	        'Content-Type': 'application/json' 
+	     };
+        
+         options.success = function(data){
+           
+             console.log(data);
+             
+             if(data.status=="FAIL"){
+            	 $("#errorlist").html(data.code).removeClass("hide");
+             }
+             esle{
+            	 
+             }
+           
+         };
+         
+         myshow.utility.ajax.ajaxCall(options);
+         
+     }) ;
 	 
- 		$('#bottone').click(function(){
+	 
+	 
+ 		$('#bottone1').click(function(){
  			event.preventDefault();
 		 var name = document.getElementById("name").value;
 		 var surname = document.getElementById("surname").value;

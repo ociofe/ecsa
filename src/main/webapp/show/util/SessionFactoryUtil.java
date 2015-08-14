@@ -69,7 +69,7 @@ public class SessionFactoryUtil {
 	    	  if (tx != null) {
 	    	    tx.rollback();
 	    	    message.setStatus("FAIL");
-	    	    message.setStatus(e.getMessage());
+	    	    message.setMessage(e.getMessage());
 	    	    message.setCode(e.getCause().getLocalizedMessage());
 	    	    
 	    	  }

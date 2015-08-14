@@ -55,6 +55,7 @@ myshow.utility.ajax = (function(){
             return;
         }
 
+       
         options.isDelete = myshow.utility.isNullOrEmpty(options.isDelete) ? false : options.isDelete;
         options.method = myshow.utility.isNullOrEmpty(options.method) ? "POST" : options.method;
         options.data = myshow.utility.isNullOrEmpty(options.data) ? "" : options.data;
@@ -63,7 +64,7 @@ myshow.utility.ajax = (function(){
         if(options.method==="POST" && !options.isDelete){
             if(!myshow.utility.isNullOrEmpty(options.idform)){
                 var idform = options.idform;
-                options.data = myshow.utility.ajax.funSerializeObject(idform);
+                options.data = JSON.stringify(myshow.utility.ajax.funSerializeObject(idform));
             }else{
                 console.log("Attenzione !!! ajaxCall metodo POST : <idform> non valorizzato");
                 return;
@@ -80,12 +81,6 @@ myshow.utility.ajax = (function(){
         options.error = myshow.utility.isNullOrEmpty(options.error) ? function(){console.log("AJAX CALL ERROR");} : options.error;
         options.beforeSend = myshow.utility.isNullOrEmpty(options.beforeSend) ? function(){myshow.utility.ajax.loadingStart(options);} : options.beforeSend;
         options.complete = myshow.utility.isNullOrEmpty(options.complete) ? function(){
-
-            if(myshow.utility.isElementExist($(myshow.selector.sidebardata))){
-                var active = $(myshow.selector.sidebardata).data("active");
-                $(myshow.selector.sidebardata).find("a.active").removeClass("active");
-                $(myshow.selector.sidebar.nav+"[data-url='" + active + "']").addClass("active");
-            }
 
             if(options.enableLoadingEnd){
                 myshow.utility.ajax.loadingEnd();
@@ -119,7 +114,7 @@ myshow.utility.ajax = (function(){
         if(!myshow.utility.isNullOrEmpty(element)){
             parent = $(element).closest('.append-loading');
         }
-        $(parent).append(myshow.selector.html.loading);
+        //$(parent).append(myshow.selector.html.loading);
     };
 
     // *****************************************************************
