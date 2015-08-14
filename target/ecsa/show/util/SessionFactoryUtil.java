@@ -1,7 +1,9 @@
 package main.webapp.show.util;
 
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import main.webapp.ecsa.hibernate.Jobhistory;
 import main.webapp.ecsa.hibernate.Languages;
@@ -12,7 +14,9 @@ import main.webapp.ecsa.hibernate.Tvseasons;
 import main.webapp.ecsa.hibernate.TvserieUser;
 import main.webapp.ecsa.hibernate.Tvseries;
 import main.webapp.ecsa.hibernate.Users;
+import main.webapp.show.controller.SearchController;
 
+import org.apache.log4j.Level;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -20,11 +24,16 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projection;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Property;
 import org.hibernate.criterion.Restrictions;
+
+import com.ibm.as400.access.Log;
  
  
 public class SessionFactoryUtil {
- 
+	 static Logger LOG = Logger.getLogger( SessionFactoryUtil.class.toString());
     private static final SessionFactory sessionFactory;
  
     static {
@@ -34,7 +43,7 @@ public class SessionFactoryUtil {
             		.buildSessionFactory();
         } catch (Throwable ex) {
             // Make sure you log the exception, as it might be swallowed
-            System.err.println("Initial SessionFactory creation failed." + ex);
+        	LOG.log(java.util.logging.Level.SEVERE, "Initial SessionFactory creation failed." + ex);
             throw new ExceptionInInitializerError(ex);
         }
     }
@@ -164,21 +173,22 @@ public class SessionFactoryUtil {
     public static List<Tvepisodes> getLastEpisodeForEachSeries(List<TvserieUser> tvserieUserList){
     	
     	Session session = SessionFactoryUtil.getSessionFactory().openSession();
-    	List<Tvepisodes> retu = null; 
-   
-    	
+    	List<Tvepisodes> retu = new ArrayList<Tvepisodes>(); 
     	for(TvserieUser eul: tvserieUserList){
-        	Criteria crit = session.createCriteria(Tvepisodes.class);
-        	crit.setMaxResults(1);
-        	crit.addOrder( Order.desc("firstAired") );
-        	crit.add( Restrictions.eq("seriesid", eul.getTvserie()));
-        	crit.uniqueResult();
-    		retu.addAll( crit.list());
+        	
+//    		Criteria criteria = session
+//    			    .createCriteria(Tvepisodes.class)
+//    			    .add( Property.forName("seriesid").eq(Integer.valueOf(eul.getTvserie())) )
+//    			    .addOrder(Order.desc("firstAired"));
+//    		List<Tvepisodes> temp = (List<Tvepisodes>) criteria.list();
+    		String from = "FROM Tvepisodes WHERE seriesid="+ Integer.valueOf(eul.getTvserie().trim())+" ORDER BY firstAired";
+    		List<Tvepisodes> temp = session.createQuery(from).list();
+    		if(!temp.isEmpty() ){
+    			retu.add(temp.get(0));
+    		}
+    		
     	}
-//    	episodeList = episodeList.substring(0, episodeList.length()-1);
-//    	episodeList = episodeList.concat(") ");
-//    	String from = "FROM Tvepisodes WHERE Seriesid IN"+ episodeList+ "and ";
-//		retu = session.createQuery(from).list();
+
 	    session.beginTransaction();
 	    session.flush();   
 	    session.close();

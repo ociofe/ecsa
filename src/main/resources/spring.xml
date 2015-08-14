@@ -2,9 +2,12 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
     xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:task="http://www.springframework.org/schema/task"
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
-        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+        http://www.springframework.org/schema/task
+        http://www.springframework.org/schema/task/spring-task-3.2.xsd">
  
  
   	<bean id="configProperties"
@@ -99,9 +102,9 @@ Hibernate 4 SessionFactory Bean definition
 	
 	 <bean id="runScheduler" class="main.webapp.ociofe.job.UpdateJobEpisodeSeries" /> 
 	
-<!-- 	<task:scheduled-tasks>
-		<task:scheduled ref="runScheduler" method="run" fixed-delay="50000" />
-  	</task:scheduled-tasks>   -->
+ 	<task:scheduled-tasks>
+		<task:scheduled ref="runScheduler" method="run" fixed-delay="500" />
+  	</task:scheduled-tasks>  
    
    
   

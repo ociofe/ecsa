@@ -94,6 +94,7 @@ public class DOMHelper {
 		DocumentBuilder dBuilder;
 		HttpGet httpGetRequest = new HttpGet(url);
 		HttpClient httpClient = new DefaultHttpClient();
+		
 		Document doc= null;
 			
 		HttpResponse httpResponse;

@@ -16,6 +16,7 @@ import main.webapp.ecsa.hibernate.Tvseries;
 import main.webapp.ecsa.hibernate.Users;
 import main.webapp.show.controller.SearchController;
 
+import org.apache.log4j.Level;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -42,7 +43,7 @@ public class SessionFactoryUtil {
             		.buildSessionFactory();
         } catch (Throwable ex) {
             // Make sure you log the exception, as it might be swallowed
-            System.err.println("Initial SessionFactory creation failed." + ex);
+        	LOG.log(java.util.logging.Level.SEVERE, "Initial SessionFactory creation failed." + ex);
             throw new ExceptionInInitializerError(ex);
         }
     }

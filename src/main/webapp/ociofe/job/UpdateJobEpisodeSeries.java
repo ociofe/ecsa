@@ -29,20 +29,10 @@ public class UpdateJobEpisodeSeries {
 				 url = lastUpdate.concat(job.getApiTimestamp());
 			}
 			
-			TheTVDBApi.getWeeklyUpdates(url);
-	    	
-//			Tvseries ser = TheTVDBApi.getSeries("279121","it");
-//	    	//hibernate save
-//		    Session session = SessionFactoryUtil.getSessionFactory().getCurrentSession();
-//		    session.beginTransaction();
-//		    session.saveOrUpdate(ser);
-//		    session.flush();   
-//		    session.close();
-
-	    	
+			TheTVDBApi.getWeeklyUpdates(url);	
 	    }
+	
 	public static void run() {
-		
 		
 		//TODO: estraggo la lista di tutte le serie e tutti gli episodi da aggiornare
 		String url = "http://thetvdb.com/api/Updates.php?type=all&time=1423825658";
