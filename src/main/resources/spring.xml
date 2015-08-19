@@ -58,11 +58,22 @@ Hibernate 4 SessionFactory Bean definition
 			<ref bean="httpUtil"/>
 		</property>
   </bean>
+   
   
-    <bean id="SessionFactoryUtil"
+  <bean id="SessionFactoryUtil"
  		 class="main.webapp.ecsa.util.SessionFactoryUtil">  
  </bean>
   
+  <bean id="searchController"
+ 		 class="main.webapp.show.controller.SearchController" scope="singleton">   
+ </bean>
+ 
+   <bean id="translationSeriesnameComparator"
+ 		 class="main.webapp.show.util.TranslationSeriesnameComparator" scope="singleton">   
+ 		 <property name="searchController" ref="searchController" ></property>
+ 		 
+ </bean>
+ 
   <bean id="UpdateJob"
  		 class="main.ociofe.job.UpdateJobEpisodeSeries">
  		  

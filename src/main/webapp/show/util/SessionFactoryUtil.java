@@ -94,9 +94,20 @@ public class SessionFactoryUtil {
 	    	session.isOpen();
 	    	String query = "FROM Users WHERE MAIL = '"+User.getMail()+"'";
 	    	List<Users> users = session.createQuery(query).list();
-	    	if (!users.isEmpty()){
-	    		message.setStatus("SUCCES");
-	    		message.setMessage("User Found");
+	    	if (!users.isEmpty()){ 
+	    		if(User.getPassword().equals(users.get(0).getPassword())){
+	    			message.setStatus("SUCCES");
+	    			message.setMessage("User Found");
+	    			 message.setCode("User Found");
+	    		}else{
+	    			message.setStatus("FAIL");
+	    			message.setMessage("Wrong Password");
+	    			message.setCode("Wrong Password");
+	    		}
+	    	}else{
+	    		 message.setStatus("FAIL");
+		    	 message.setMessage("User do not exist");
+		    	 message.setCode("User do not exist");
 	    	}
 	    	} catch(Exception e) {
 	    	  if (tx != null) {
@@ -267,6 +278,28 @@ public class SessionFactoryUtil {
 	    	tx = session.beginTransaction();
 	    	String from = "FROM Tvseries WHERE seriesName like '%"+ seriesName +"%'";
 	    	season = session.createQuery(from).list();
+	    	tx.commit();
+	    	} catch(Exception e) {
+	    	  if (tx != null) {
+	    	    tx.rollback();
+	    	  }
+	    	} finally {
+	    	  if (session != null) {
+	    		  session.close(); // 
+	    	  }
+	    	}
+	    
+	    return season;
+    }
+    
+    public static List<TranslationSeriesname> searchTranslationSeriesname(String seriesName ){
+    	Session session = SessionFactoryUtil.getSessionFactory().openSession();
+    	List<TranslationSeriesname> season = null; 
+    	Transaction tx = null;
+	    try {
+	    	tx = session.beginTransaction();
+	    	String from = "FROM TranslationSeriesname WHERE translation like '%"+ seriesName +"%'";
+	    	season = (List<TranslationSeriesname>) session.createQuery(from).list();
 	    	tx.commit();
 	    	} catch(Exception e) {
 	    	  if (tx != null) {
