@@ -20,3 +20,11 @@
 
 body{ font-family: 'Special Elite', cursive; }
 
+.responsiveImg{ max-width:100% ; display:block; height:auto}
+
+
+#loading-indicator {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}

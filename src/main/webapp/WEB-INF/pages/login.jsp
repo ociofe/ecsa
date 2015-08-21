@@ -7,6 +7,8 @@
 <html>
 
 
+
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>    
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -40,13 +42,15 @@
 
 
 <body>
+<!-- <img src="/images/loading.gif" id="loading-indicator" style="display:none" />
+<img src="/ecsa/resources/images/loading.gif" id="loading-indicator" /> -->
 
 
 <div class="alert alert-danger hide" role="alert" id="errorlist"></div>
 
 <!-- REGISTRATION  -->
 <div class="container">
- 
+ <img src="/ecsa/resources/images/ecsaLogo.jpg" />
     <h3 class="panel-title">Registration</h3>
  
 	<div class="row">

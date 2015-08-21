@@ -298,7 +298,8 @@ public class SessionFactoryUtil {
     	Transaction tx = null;
 	    try {
 	    	tx = session.beginTransaction();
-	    	String from = "FROM TranslationSeriesname WHERE translation like '%"+ seriesName +"%'";
+	    	String from = "FROM TranslationSeriesname WHERE translation like '%"+ seriesName +"%' and languageid = 7";
+	    	session.createCriteria(TranslationSeriesname.class).setProjection(Projections.distinct(Projections.property("translation")));
 	    	season = (List<TranslationSeriesname>) session.createQuery(from).list();
 	    	tx.commit();
 	    	} catch(Exception e) {

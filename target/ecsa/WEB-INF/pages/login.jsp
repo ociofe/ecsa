@@ -7,6 +7,8 @@
 <html>
 
 
+
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>    
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -28,6 +30,8 @@
 <script src="<c:url value="/resources/js/utility.js" />"></script> 
 <script src="<c:url value="/resources/js/utility.ajax.js" />"></script> 
 
+<script src="<c:url value="/resources/js/jquery-picture-min.js" />"></script> 
+
 <!-- Validator include -->
 <script src="<c:url value="/resources/js/bootstrapValidator.js" />"></script>
 <script src="<c:url value="/resources/js/it_IT.js" />"></script>
@@ -38,6 +42,8 @@
 
 
 <body>
+<!-- <img src="/images/loading.gif" id="loading-indicator" style="display:none" />
+<img src="/ecsa/resources/images/loading.gif" id="loading-indicator" /> -->
 
 
 <div class="alert alert-danger hide" role="alert" id="errorlist"></div>
@@ -48,6 +54,7 @@
     <h3 class="panel-title">Registration</h3>
  
 	<div class="row">
+		<div class="col-sm-12">
 		<form id="frmRegistration" class="form-horizontal">
 			 <div class="form-group">
 				<label class="control-label col-sm-2" for="user">User :</label>
@@ -85,7 +92,7 @@
 			    </span>
 		    </div>
 		 </form>
-
+		</div>
      </div>
  </div>
  
@@ -160,6 +167,7 @@
     <h3 class="panel-title">LOGIN</h3>
  
 	<div class="row">
+	<div class="col-sm-12">
 		<form id="frmLogin" class="form-horizontal">
 			 <div class="form-group">
 				<label class="control-label col-sm-2" for="mail">Email :</label>
@@ -179,7 +187,7 @@
 			    </span>
 		    </div>
 		 </form>
-
+		</div>
      </div>
  </div>
 
@@ -224,22 +232,20 @@
     <h3 class="panel-title">SEARCH</h3>
  
 	<div class="row">
-		<form id="frmSearch" class="form-horizontal">
+		<div class="col-sm-12">
+		<form id="frmSearch" class="form-inline">
 			 <div class="form-group">
-				<label class="control-label col-sm-2" for="searchseries">Series :</label>
-				<div class="col-sm-4">
-					<input class="form-control input-sm chat-input" id="searchseries" type="text" name="searchseries">
-				</div>
-				<div class="wrapper" align="center">
-					<span class="group-btn" >     
-						<input class="btn btn-primary btn-md" placeholder="Search" type="button" id="bottoneSearch" value="Invia i dati">
-				    </span>
-		    	</div>
+				<label class="" for="searchseries">Series :</label>
+				<input class="form-control" id="searchseries" type="text" name="searchseries">
 			</div>
+		    <button class="btn btn-primary" placeholder="Search" type="button" id="bottoneSearch" value="Invia i dati">Search...</button>
 			
 		 </form>
-
+		</div>
      </div>
+ 		<div id="imagelist">
+      		<!-- <img class="responsiveImg" src="http://thetvdb.com/banners/graphical/70327-g.jpg" /> -->
+		</div>
  </div>
 
  <script type="text/javascript">
@@ -260,12 +266,22 @@
          options.success = function(data){
            
              console.log(data);
-             
+             $("#imagelist").empty();
              if(data.status=="FAIL"){
             	 $("#errorlist").html(data.code).removeClass("hide");
              }
              else {
-				/* Go to another page */
+            	 for(var i = 0; i < data.length; i++) {
+            		 var seriesId = data[i].seriesid;
+                   	 var my_awesome_script = document.createElement('img');
+                   	 my_awesome_script.className = "responsiveImg";
+                	 my_awesome_script.setAttribute('src','http://thetvdb.com/banners/graphical/'+seriesId+'-g.jpg');
+                	 $("#imagelist").append(my_awesome_script);
+                	 
+            		}$("img").error(function(){
+            	        $(this).hide();
+            		});
+
 			}
            
          };
@@ -275,6 +291,15 @@
      }) ;
 
  });
+ 
+
+
+ /* Replace image */
+/*  $('img').error(function(){
+     $(this).attr('src', 'missing.png');
+}); */
+
+ 
 </script>
 	<!-- END SEARCH SERIES  -->
 	
