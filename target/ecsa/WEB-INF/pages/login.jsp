@@ -15,18 +15,18 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> 
 
+<!-- FONT -->
+<link href='http://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
+
+<!-- BOOTSTRAP -->
 <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">  
 <link href="<c:url value="/resources/css/bootstrap-theme.min.css" />" rel="stylesheet">
 
-
+<!--  -->
 <script src="<c:url value="/resources/js/main.js" />"></script> 
 <script src="<c:url value="/resources/js/utility.js" />"></script> 
 <script src="<c:url value="/resources/js/utility.ajax.js" />"></script> 
-
-<!-- IMPORT DATA TABLE -->
-<script src="<c:url value="/resources/js/jquery.dataTables.min.js" />"></script>  
-<link href="<c:url value="/resources/css/jquery.dataTables.css" />" rel="stylesheet">
 
 <!-- Validator include -->
 <script src="<c:url value="/resources/js/bootstrapValidator.js" />"></script>
@@ -35,7 +35,8 @@
 
 
 <link href="<c:url value="/resources/css/index.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet"> 
+
+
 <body>
 
 

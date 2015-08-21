@@ -18,5 +18,6 @@
 	 cursor: pointer; cursor: hand;
 }
 
+body{ font-family: 'Special Elite', cursive; }
 
-
+.responsiveImg{ max-width:100% ; display:block; height:auto}

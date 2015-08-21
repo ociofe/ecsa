@@ -70,7 +70,10 @@ Hibernate 4 SessionFactory Bean definition
  
    <bean id="translationSeriesnameComparator"
  		 class="main.webapp.show.util.TranslationSeriesnameComparator" scope="singleton">   
- 		 <property name="searchController" ref="searchController" ></property>
+ 		<!--  <property name="searchController" ref="searchController" ></property> -->
+ 		<property name="searchController"> 
+			<ref bean="searchController"/>
+		</property>
  		 
  </bean>
  
@@ -108,6 +111,9 @@ Hibernate 4 SessionFactory Bean definition
 	<bean id="baseController" class="main.webapp.show.controller.BaseController" >
 		<property name="elementNote"> 
 			<ref bean="elementNote"/>
+		</property>
+		<property name="httpUtil"> 
+			<ref bean="httpUtil"/>
 		</property>
 	</bean>
 	

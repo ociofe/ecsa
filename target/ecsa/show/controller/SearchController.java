@@ -14,6 +14,7 @@ import main.webapp.ecsa.hibernate.TvserieUser;
 import main.webapp.ecsa.hibernate.Users;
 import main.webapp.show.util.MessageData;
 import main.webapp.show.util.SessionFactoryUtil;
+import main.webapp.show.util.TranslationSeriesnameComparator;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -76,17 +77,3 @@ public class SearchController {
 
 }
 
-class TranslationSeriesnameComparator implements Comparator<TranslationSeriesname>
-{
-	 static Logger LOG = Logger.getLogger( TranslationSeriesnameComparator.class.toString());
-	 
-    public int compare(TranslationSeriesname c1, TranslationSeriesname c2)
-    {
-    	 ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
-
-    	 SearchController keyWord = (SearchController) context.getBean("searchController");
-         
-    	 LOG.info(keyWord.getKeyWord());
-        return c1.getTranslation().compareTo(c2.getTranslation());
-    }
-}

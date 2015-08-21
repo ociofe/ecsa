@@ -2,7 +2,9 @@ package main.webapp.show.controller;
 
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.StringTokenizer;
 import java.util.logging.Logger;
 
@@ -14,7 +16,6 @@ import main.webapp.ecsa.hibernate.TvserieUser;
 import main.webapp.ecsa.hibernate.Users;
 import main.webapp.show.util.MessageData;
 import main.webapp.show.util.SessionFactoryUtil;
-import main.webapp.show.util.TranslationSeriesnameComparator;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -29,7 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SearchController {
 	
-	private String keyWord; 
+	public static String keyWord; 
 
 	 
 	 static Logger LOG = Logger.getLogger( SearchController.class.toString());
@@ -47,18 +48,19 @@ public class SearchController {
 	@RequestMapping(value="/series", method = RequestMethod.POST)
 	public @ResponseBody List<TranslationSeriesname> searchPost( Users user, @RequestParam("searchParam") String searchParam) {
 
-		MessageData message = new MessageData();
 		keyWord = searchParam;
 		List<TranslationSeriesname> seriesList =  SessionFactoryUtil.searchTranslationSeriesname(searchParam);
 		Collections.sort(seriesList, new TranslationSeriesnameComparator());
-		return seriesList;
+		if (seriesList.size() > 15){
+			return seriesList.subList(0, 15);
+		}else{
+			return seriesList;
+		}
 	}
 	
 	@RequestMapping(value="/userSeries", method = RequestMethod.POST, consumes="application/json", headers = {"Content-type=application/json"})
 	public @ResponseBody List<Tvepisodes> getNextEpisodeForEachSeries(@RequestBody Users user) {
 
-		 
-		MessageData message = new MessageData();
  
 		List<TvserieUser> seriesList =  SessionFactoryUtil.getSeriesTvserieUserForUser(user);
 		if(!seriesList.isEmpty()){
